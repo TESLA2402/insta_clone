@@ -1,18 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/screen/mainpage/instahome.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
-
-  @override
-  _LoginState createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
-  late String _email, _password;
-  final auth = FirebaseAuth.instance;
-
+class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,11 +32,7 @@ class _LoginState extends State<Login> {
                         decoration: InputDecoration(
                             labelText: 'Username',
                             prefixIcon: Icon(Icons.email)),
-                        onChanged: (value) {
-                          setState(() {
-                            _email = value.trim();
-                          });
-                        }),
+                        onChanged: (value) {}),
                   ),
                   Container(
                     child: TextFormField(
@@ -59,27 +44,45 @@ class _LoginState extends State<Login> {
                             labelText: 'Password',
                             prefixIcon: Icon(Icons.lock)),
                         obscureText: true,
+                        onChanged: (value) {}),
+                  ),
+                  Container(
+                    child: TextFormField(
+                        validator: (input) {
+                          if (input!.length < 6)
+                            return 'Provide Minimum 6 Character';
+                        },
+                        decoration: InputDecoration(
+                            labelText: 'Confirm Password',
+                            prefixIcon: Icon(Icons.lock)),
+                        obscureText: true,
+                        onChanged: (value) {}),
+                  ),
+                  Container(
+                    child: TextFormField(
+                        validator: (input) {
+                          if (input!.length < 6)
+                            return 'Provide Minimum 6 Character';
+                        },
+                        decoration: InputDecoration(
+                            labelText: 'Email ID',
+                            prefixIcon: Icon(Icons.email)),
+                        obscureText: true,
                         onChanged: (value) {
-                          setState(() {
-                            _password = value.trim();
-                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => InstaHome()),
+                          );
                         }),
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       ElevatedButton(
-                        onPressed: () {
-                          auth.signInWithEmailAndPassword(
-                              email: _email, password: _password);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => InstaHome()),
-                          );
-                        },
+                        onPressed: () {},
                         child: Text(
-                          'Log in',
+                          'Sign In',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,

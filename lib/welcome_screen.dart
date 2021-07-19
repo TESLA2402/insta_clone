@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/screen/authentication/Login.dart';
+import 'package:instagram_clone/screen/authentication/SignUp.dart';
 import 'package:instagram_clone/screen/authentication/signin.dart';
 //import 'package:instagram_clone/screen/auth/signup.dart';
 //import 'SignUp.dart';
@@ -54,7 +55,7 @@ class WelcomeScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Signinpage()),
+                      MaterialPageRoute(builder: (context) => SignUp()),
                     );
                   },
                   child: Text(
