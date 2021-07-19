@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/screen/chat/chatDM.dart';
 import 'package:instagram_clone/screen/mainpage/instabody.dart';
 import 'package:instagram_clone/screen/profile/profilescreen.dart';
+import 'package:instagram_clone/screen/search/search.dart';
 
 class InstaHome extends StatefulWidget {
   const InstaHome({Key? key}) : super(key: key);
@@ -27,9 +29,26 @@ class _InstaHomeState extends State<InstaHome> {
           actions: <Widget>[
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: Icon(
-                Icons.send_outlined,
-                color: Colors.black,
+              child: new IconButton(
+                icon: active == 'Send'
+                    ? Icon(
+                        Icons.send,
+                        color: Colors.black,
+                        size: 30,
+                      )
+                    : Icon(
+                        Icons.send_outlined,
+                        size: 30,
+                      ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DM()),
+                  );
+                  setState(() {
+                    active = 'Send';
+                  });
+                },
               ),
             )
           ],
@@ -71,6 +90,10 @@ class _InstaHomeState extends State<InstaHome> {
                             size: 30,
                           ),
                     onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Search()),
+                      );
                       setState(() {
                         active = 'Search';
                       });

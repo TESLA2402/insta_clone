@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/screen/mainpage/instahome.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
+
+  @override
+  _SignUpState createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  late String _email, _password;
+  final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +42,11 @@ class SignUp extends StatelessWidget {
                         decoration: InputDecoration(
                             labelText: 'Username',
                             prefixIcon: Icon(Icons.email)),
-                        onChanged: (value) {}),
+                        onChanged: (value) {
+                          setState(() {
+                            _email = value.trim();
+                          });
+                        }),
                   ),
                   Container(
                     child: TextFormField(
@@ -44,7 +58,11 @@ class SignUp extends StatelessWidget {
                             labelText: 'Password',
                             prefixIcon: Icon(Icons.lock)),
                         obscureText: true,
-                        onChanged: (value) {}),
+                        onChanged: (value) {
+                          setState(() {
+                            _password = value.trim();
+                          });
+                        }),
                   ),
                   Container(
                     child: TextFormField(
@@ -80,7 +98,15 @@ class SignUp extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          auth.signInWithEmailAndPassword(
+                              email: _email, password: _password);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => InstaHome()),
+                          );
+                        },
                         child: Text(
                           'Sign In',
                           style: TextStyle(
