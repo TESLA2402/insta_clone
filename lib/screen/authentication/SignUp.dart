@@ -79,19 +79,18 @@ class _SignUpState extends State<SignUp> {
                   Container(
                     child: TextFormField(
                         validator: (input) {
-                          if (input!.length < 6)
-                            return 'Provide Minimum 6 Character';
+                          if (input!.isEmpty) return 'Enter Email';
                         },
                         decoration: InputDecoration(
                             labelText: 'Email ID',
                             prefixIcon: Icon(Icons.email)),
                         obscureText: true,
                         onChanged: (value) {
-                          Navigator.push(
+                          /*Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => InstaHome()),
-                          );
+                          );*/
                         }),
                   ),
                   Column(
@@ -99,7 +98,7 @@ class _SignUpState extends State<SignUp> {
                     children: <Widget>[
                       ElevatedButton(
                         onPressed: () {
-                          auth.signInWithEmailAndPassword(
+                          auth.createUserWithEmailAndPassword(
                               email: _email, password: _password);
                           Navigator.push(
                             context,
