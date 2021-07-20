@@ -33,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               new Padding(
                 padding: new EdgeInsets.only(left: 10.0),
                 child: new Text(
-                  "UserName",
+                  "Lakshay",
                   style: new TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
