@@ -84,7 +84,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           borderRadius: BorderRadius.circular(80.0),
                           image: _photoURL != null
                               ? DecorationImage(
-                                  image: NetworkImage(_photoURL!),
+                                  image: AssetImage('assets/posts/rick.jpg'),
                                   fit: BoxFit.cover)
                               : DecorationImage(
                                   image: AssetImage('assets/posts/rick.jpg'),
@@ -136,6 +136,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ),
                 ),
                 Divider(),
+                SizedBox(
+                  height: 20,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: Text(
