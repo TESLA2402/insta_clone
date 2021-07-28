@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/screen/authentication/Login.dart';
 import 'package:instagram_clone/screen/authentication/SignUp.dart';
-import 'package:instagram_clone/screen/authentication/signin.dart';
+
 //import 'package:instagram_clone/screen/auth/signup.dart';
 //import 'SignUp.dart';
 //import 'package:instagram_clone/Login.dart';

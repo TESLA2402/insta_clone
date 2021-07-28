@@ -19,12 +19,12 @@ class _ProfilePostsState extends State<ProfilePosts> {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
         ),
-        itemCount: posts.length,
+        //itemCount: posts.length,
         itemBuilder: (BuildContext context, int index) => Container(
           decoration: new BoxDecoration(
-            image: new DecorationImage(
-                fit: BoxFit.fill, image: AssetImage(posts[index].what)),
-          ),
+              //image: new DecorationImage(
+              //fit: BoxFit.fill, image: AssetImage(posts[index].what)),
+              ),
         ),
       ),
     );

@@ -4,21 +4,25 @@ class allposts {
   late String what;
   late String caption;
   late List likedby;
+  late String url;
 
-  allposts(
-      {required String who,
-      required String when,
-      required String caption,
-      required String what,
-      required List likedby}) {
+  allposts({
+    required String who,
+    required String when,
+    required String caption,
+    required String what,
+    required List likedby,
+    required url,
+  }) {
     this.who = who;
     this.when = when;
     this.what = what;
     this.likedby = likedby;
     this.caption = caption;
+    this.url = url;
   }
 }
-
+/*
 List<allposts> posts = [
   allposts(
       who: "Rick",
@@ -135,3 +139,4 @@ List<allposts> posts = [
       caption: 'hi',
       likedby: ['a', 'b', 'c', 'd', 'e', 'rick']),
 ];
+*/

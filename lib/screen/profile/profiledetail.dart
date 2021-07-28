@@ -2,17 +2,38 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/lists/allstories.dart';
 import 'package:instagram_clone/ringforstories/gradient_ring.dart';
+import 'package:instagram_clone/screen/profile/editprofile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:instagram_clone/constants/constants.dart';
 
 class ProfileDetail extends StatefulWidget {
-  const ProfileDetail({Key? key}) : super(key: key);
-
+  const ProfileDetail(
+      {Key? key, required this.username, required this.bio, required this.phno})
+      : super(key: key);
+  final String username, bio, phno;
   @override
   _ProfileDetailState createState() => _ProfileDetailState();
 }
 
 class _ProfileDetailState extends State<ProfileDetail> {
+  double? _height, _width;
+  FirebaseAuth auth = FirebaseAuth.instance;
+  late String? _photoURL;
+  late final String uid;
+  late final User user;
+
+  @override
+  void initState() {
+    super.initState();
+    user = auth.currentUser!;
+    uid = user.uid;
+    _photoURL = auth.currentUser!.photoURL;
+  }
+
   @override
   Widget build(BuildContext context) {
+    _height = MediaQuery.of(context).size.height;
+    _width = MediaQuery.of(context).size.width;
     return Container(
         height: (MediaQuery.of(context).size.height - 20) * (1 / 3),
         margin: EdgeInsets.all(10),
@@ -42,17 +63,33 @@ class _ProfileDetailState extends State<ProfileDetail> {
               height: 20.0,
             ),
             Text(
-              "Lakshay",
+              widget.username,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text("IITG'24"),
+            Text(widget.bio),
             SizedBox(
               height: 20.0,
             ),
             SizedBox(
               width: MediaQuery.of(context).size.height,
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => EditProfileScreen(
+                            username: widget.username,
+                            email: user.email!,
+                            uid: uid,
+                            bio: widget.bio,
+                            phno: widget.phno),
+                      ),
+                    ).whenComplete(() {
+                      setState(() {
+                        Navigator.pushReplacementNamed(context, HOME);
+                      });
+                    });
+                  },
                   child: Text(
                     "Edit Your Profile",
                     style: TextStyle(color: Colors.black),
