@@ -103,17 +103,16 @@ class _LoginState extends State<Login> {
                         ElevatedButton(
                           //controller: _btnController,
                           onPressed: () async {
-                            if (keys.currentState!.validate()) {
+                            /*if (keys.currentState!.validate()) {
                               setState(() {
                                 readonly = true;
                               });
-                              FocusScope.of(context).unfocus();
-                              String msg = await auth.signIn(
-                                  emailController.text.trim(),
-                                  passwordController.text.trim());
-                              print(msg);
-                              Navigator.pushNamed(context, HOME);
-                            }
+                              FocusScope.of(context).unfocus();*/
+                            String msg = await auth.signIn(
+                                emailController.text.trim(),
+                                passwordController.text.trim());
+                            print(msg);
+                            Navigator.pushNamed(context, HOME);
                           },
                           child: Text(
                             'Log in',

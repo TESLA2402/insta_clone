@@ -96,7 +96,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 GestureDetector(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 12.0),
-                    child: Text('Change Photo',
+                    child: Text('DP Change',
                         style: TextStyle(
                             color: Colors.blue[700],
                             fontSize: 20.0,
@@ -108,6 +108,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 )
               ],
             ),
+            SizedBox(
+              height: 50,
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -116,8 +119,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   child: TextField(
                     controller: _nameController,
                     decoration: InputDecoration(
-                      hintText: 'Name',
-                      labelText: 'Name',
+                      hintText: 'Username',
+                      labelText: 'Username',
                     ),
                   ),
                 ),
@@ -126,8 +129,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       horizontal: 15.0, vertical: 8.0),
                   child: TextField(
                     controller: _bioController,
-                    maxLines: 3,
-                    maxLength: 75,
+                    maxLines: 2,
+                    maxLength: 25,
                     decoration:
                         InputDecoration(hintText: 'Bio', labelText: 'Bio'),
                   ),
@@ -136,7 +139,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: Text(
-                    'Private Information',
+                    'Personal Information',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 18.0,
