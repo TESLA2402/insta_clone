@@ -263,20 +263,6 @@ class _InstaHomeState extends State<InstaHome> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      'Name',
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: TextFormField(
-                        controller: nameController,
-                        validator: (value) {
-                          return value!.length != 0
-                              ? null
-                              : "Please Enter something";
-                        },
-                      ),
-                    ),
                     Text('Caption'),
                     Padding(
                       padding: EdgeInsets.all(8.0),

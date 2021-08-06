@@ -38,6 +38,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late String uid, username, bio, phno;
+
   bool isloading = true;
 
   @override
