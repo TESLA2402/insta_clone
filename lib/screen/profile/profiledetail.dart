@@ -56,7 +56,7 @@ class _ProfileDetailState extends State<ProfileDetail> {
                 ),
               ),
               Column(children: [Text("16"), Text('Posts')]),
-              Column(children: [Text("1M"), Text('Followers')]),
+              Column(children: [Text("100M"), Text('Followers')]),
               Column(children: [Text("5"), Text('Following')])
             ]),
             SizedBox(
