@@ -66,6 +66,8 @@ class FileUpload {
           'url': photoURL,
           'time': time,
           'who_url': profileURL,
+          'likedby': ['a'],
+          'post_id': postid
         };
         await collectionRef
             .doc(uid)

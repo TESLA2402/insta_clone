@@ -154,7 +154,7 @@ class _SignUpState extends State<SignUp> {
                             decoration: InputDecoration(
                                 labelText: 'Email ID',
                                 prefixIcon: Icon(Icons.email)),
-                            obscureText: true,
+                            //obscureText: true,
                             onChanged: (text) {
                               setState(() {
                                 if (emailController.text.length >= 2 &&

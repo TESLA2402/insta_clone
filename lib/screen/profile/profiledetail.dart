@@ -55,8 +55,8 @@ class _ProfileDetailState extends State<ProfileDetail> {
                   margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 ),
               ),
-              Column(children: [Text("16"), Text('Posts')]),
-              Column(children: [Text("100M"), Text('Followers')]),
+              Column(children: [Text("0"), Text('Posts')]),
+              Column(children: [Text("120"), Text('Followers')]),
               Column(children: [Text("5"), Text('Following')])
             ]),
             SizedBox(

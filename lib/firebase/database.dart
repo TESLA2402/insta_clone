@@ -54,5 +54,17 @@ class DatabaseFirestore {
         .collection('users')
         .doc(uid)
         .set({'dp': url}, SetOptions(merge: true));
+    await FirebaseFirestore.instance
+        .collection('allposts')
+        .where('who', isEqualTo: uid)
+        .snapshots()
+        .forEach((element) {
+      element.docs.forEach((element) {
+        FirebaseFirestore.instance
+            .collection('allposts')
+            .doc(element.id)
+            .update({'who': url});
+      });
+    });
   }
 }

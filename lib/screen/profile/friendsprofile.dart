@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:instagram_clone/firebase/auth.dart';
+//import 'package:instagram_clone/firebase/repository.dart';
 import 'package:instagram_clone/ringforstories/gradient_ring.dart';
 
 class FriendsProfile extends StatefulWidget {
@@ -11,11 +13,14 @@ class FriendsProfile extends StatefulWidget {
 }
 
 class _FriendsProfileState extends State<FriendsProfile> {
+  late String currentUserId, followingUserId;
+
   bool isFollowing = false;
   bool followButtonClicked = false;
   int postCount = 0;
-  int followerCount = 0;
+  int followersCount = 0;
   int followingCount = 0;
+
   followUser() {
     print('following user');
 
@@ -116,7 +121,7 @@ class _FriendsProfileState extends State<FriendsProfile> {
                                 shape: BoxShape.circle,
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
-                                    image: AssetImage("rick.jpg")),
+                                    image: AssetImage('assets/posts/rick.jpg')),
                               ),
                               margin:
                                   const EdgeInsets.symmetric(horizontal: 8.0),
@@ -140,7 +145,6 @@ class _FriendsProfileState extends State<FriendsProfile> {
                     SizedBox(
                       child: buildProfileButton(),
                       /*child: ElevatedButton(onPressed: (){
-
                       }, 
                       child: Text('Follow',
                       style: TextStyle(color: Colors.white)
@@ -156,4 +160,21 @@ class _FriendsProfileState extends State<FriendsProfile> {
                   ]),
             )));
   }
+
+  /*Widget detailsWidget(String count, String label) {
+    return Column(
+      children: <Widget>[
+        Text(count,
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18.0,
+                color: Colors.black)),
+        Padding(
+          padding: const EdgeInsets.only(top: 4.0),
+          child:
+              Text(label, style: TextStyle(fontSize: 16.0, color: Colors.grey)),
+        )
+      ],
+    );
+  }*/
 }

@@ -52,7 +52,10 @@ class _InstaHomeState extends State<InstaHome> {
       InstaBody(widget.uid),
       Search(),
       ProfileScreen(
-          username: widget.username, bio: widget.bio, phno: widget.phno)
+        username: widget.username,
+        bio: widget.bio,
+        phno: widget.phno,
+      )
     ];
     return new Scaffold(
         body: screens[index],
@@ -186,9 +189,10 @@ class _InstaHomeState extends State<InstaHome> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => ProfileScreen(
-                                username: widget.username,
-                                bio: widget.bio,
-                                phno: widget.phno)),
+                                  username: widget.username,
+                                  bio: widget.bio,
+                                  phno: widget.phno,
+                                )),
                       );
                     }),
               ],

@@ -2,10 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:instagram_clone/sharedpref/sharedpref.dart';
 
+//import 'package:firebase_storage/firebase_storage.dart';
 class Auth {
   CollectionReference users = FirebaseFirestore.instance.collection("users");
   sharedpref sf = new sharedpref();
-
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   Future<String> signUp(String username, String email, String password) async {
     try {
       bool usernameexist = await usernameExist(username);
@@ -19,9 +20,11 @@ class Auth {
           'email': userCredential.user!.email.toString(),
           'bio': 'IITG 24',
           'phno': '',
-          'dp': 'rick.jpg',
+          'dp': 'assets/posts/unknown.jpg',
           'uid': userCredential.user!.uid,
           'searchname': setSearchParam(username),
+          'followers': '0',
+          'following': '0',
         };
         await userCredential.user!.updateDisplayName(username);
         await userCredential.user!.updatePhotoURL('rick.jpg');
@@ -45,6 +48,13 @@ class Auth {
       print(e);
       return ('Error $e');
     }
+  }
+
+  Future<List<DocumentSnapshot>> fetchStats(
+      {required String uid, required String label}) async {
+    QuerySnapshot querySnapshot =
+        await _firestore.collection("users").doc(uid).collection(label).get();
+    return querySnapshot.docs;
   }
 
   Future<bool> usernameExist(String username) async {
